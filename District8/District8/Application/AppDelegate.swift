@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initializers.forEach { $0.performInitialization() }
 
         let initialController = BaseNavigationController()
-        initialController.setRootWireframe(ExampleWireframe())
+        initialController.setRootWireframe(OverviewWireframe())
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
