@@ -40,7 +40,7 @@ final class DetailViewController: UIViewController {
         webView.autoresizesSubviews = true
         webView.isOpaque = false
         webView.scrollView.backgroundColor = .clear
-        webView.scrollView.isScrollEnabled = false
+        webView.scrollView.isScrollEnabled = true
         webView.backgroundColor = .clear
         webView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(webView)

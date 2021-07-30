@@ -81,7 +81,8 @@ final class OverviewViewController: UIViewController {
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.leading.top.bottom.centerX.equalToSuperview()
+            make.leading.bottom.centerX.equalToSuperview()
+            make.top.equalTo(view.snp.top)
         }
     }
 }

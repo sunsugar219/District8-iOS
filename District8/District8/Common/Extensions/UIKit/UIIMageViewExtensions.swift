@@ -19,7 +19,11 @@ extension UIImageView {
                 let image = UIImage(data: data)
                 else { return }
             DispatchQueue.main.async() { [weak self] in
+                if image.size.width > UIScreen.main.bounds.width {
+                    self?.image = image.resize(toWidth: UIScreen.main.bounds.width)
+                } else {
                 self?.image = image
+                }
             }
         }.resume()
     }

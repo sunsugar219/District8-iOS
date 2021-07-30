@@ -99,11 +99,32 @@ class FeaturedArticle: UITableViewCell {
     
     func bind(model:NewsModel) {
         title.text = model.title?.text
-//        placeTag.text = model.place
         subtitle.text = model.date
-//        if let remoteImg = model.image {
-//            mainImage.downloaded(from: remoteImg)
-//        }
+        
+        var place = ""
+        if let graphItems = model.main?.schema?.graph {
+            for item in graphItems {
+                if item.type == GraphItemType.Article.rawValue, let tags = item.articleSection, let image = item.image?.link {
+                    mainImage.downloaded(from: image)
+                    
+                    for tag in tags {
+                    switch tag {
+                    case Tags.Delft.rawValue:
+                        place = Tags.Delft.rawValue
+                    case Tags.Haaglanden.rawValue:
+                        place = Tags.Haaglanden.rawValue
+                    case Tags.Westland.rawValue:
+                        place = Tags.Westland.rawValue
+                    case "Rotterdam-Rijnmond":
+                        place = "Rotterdam-Rijnmond"
+                    default:
+                        place = ""
+                    }
+                    }
+                }
+            }
+        }
+        placeTag.text = place
     }
     
 }

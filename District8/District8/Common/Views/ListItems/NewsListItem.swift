@@ -87,13 +87,32 @@ class NewsListItem: UITableViewCell {
     
     func bind(model: NewsModel) {
         titleLabel.text = model.title?.text
-        
-//        var subtitle = model.place ?? ""
-//        subtitle.append(" -- \(model.date ?? "")")
-//        subtitleLabel.text = subtitle
-        
-//        if let remoteUrl = model.image {
-//            newsImageView.downloaded(from: remoteUrl)
-//        }
+        var place = ""
+        if let graphItems = model.main?.schema?.graph {
+            for item in graphItems {
+                if item.type == GraphItemType.Article.rawValue, let tags = item.articleSection, let image = item.thumbnailUrl {
+                    
+                    newsImageView.downloaded(from: image)
+                    
+                    for tag in tags {
+                    switch tag {
+                    case Tags.Delft.rawValue:
+                        place = Tags.Delft.rawValue
+                    case Tags.Haaglanden.rawValue:
+                        place = Tags.Haaglanden.rawValue
+                    case Tags.Westland.rawValue:
+                        place = Tags.Westland.rawValue
+                    case "Rotterdam-Rijnmond":
+                        place = "Rotterdam-Rijnmond"
+                    default:
+                        place = ""
+                    }
+                    }
+                }
+            }
+        }
+        var subtitle = place
+        subtitle.append(" -- \(model.date ?? "")")
+        subtitleLabel.text = subtitle
     }
 }

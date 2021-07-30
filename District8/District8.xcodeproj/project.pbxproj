@@ -13,6 +13,10 @@
 		0456EF6026B41E45003DBB49 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456EF5F26B41E45003DBB49 /* Title.swift */; };
 		0456EF6526B41F42003DBB49 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456EF6426B41F42003DBB49 /* Content.swift */; };
 		0456EF6A26B41FCF003DBB49 /* YoastHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456EF6926B41FCF003DBB49 /* YoastHead.swift */; };
+		0456EF6F26B4736B003DBB49 /* Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456EF6E26B4736A003DBB49 /* Schema.swift */; };
+		0456EF7426B47493003DBB49 /* GraphItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456EF7326B47493003DBB49 /* GraphItem.swift */; };
+		0456EF7926B487A6003DBB49 /* GraphItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456EF7826B487A6003DBB49 /* GraphItemType.swift */; };
+		0456EF7E26B48839003DBB49 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456EF7D26B48839003DBB49 /* Image.swift */; };
 		04D11FEB26B29DDF00A597B4 /* District8Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D11FEA26B29DDF00A597B4 /* District8Tests.swift */; };
 		04D11FF626B29DDF00A597B4 /* District8UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D11FF526B29DDF00A597B4 /* District8UITests.swift */; };
 		04D1201A26B2A09600A597B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D1201926B2A09600A597B4 /* AppDelegate.swift */; };
@@ -89,6 +93,10 @@
 		0456EF5F26B41E45003DBB49 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		0456EF6426B41F42003DBB49 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		0456EF6926B41FCF003DBB49 /* YoastHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoastHead.swift; sourceTree = "<group>"; };
+		0456EF6E26B4736A003DBB49 /* Schema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schema.swift; sourceTree = "<group>"; };
+		0456EF7326B47493003DBB49 /* GraphItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphItem.swift; sourceTree = "<group>"; };
+		0456EF7826B487A6003DBB49 /* GraphItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphItemType.swift; sourceTree = "<group>"; };
+		0456EF7D26B48839003DBB49 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		04D11FD026B29DDB00A597B4 /* District8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = District8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D11FE626B29DDF00A597B4 /* District8Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = District8Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D11FEA26B29DDF00A597B4 /* District8Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = District8Tests.swift; sourceTree = "<group>"; };
@@ -312,6 +320,9 @@
 				0456EF5F26B41E45003DBB49 /* Title.swift */,
 				0456EF6426B41F42003DBB49 /* Content.swift */,
 				0456EF6926B41FCF003DBB49 /* YoastHead.swift */,
+				0456EF6E26B4736A003DBB49 /* Schema.swift */,
+				0456EF7326B47493003DBB49 /* GraphItem.swift */,
+				0456EF7D26B48839003DBB49 /* Image.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -361,6 +372,7 @@
 			children = (
 				04D120CE26B2B2E500A597B4 /* Fonts.swift */,
 				04D1211026B3EA7100A597B4 /* Tags.swift */,
+				0456EF7826B487A6003DBB49 /* GraphItemType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -710,6 +722,7 @@
 				04D1210C26B3E87D00A597B4 /* Tag.swift in Sources */,
 				04D120CF26B2B2E500A597B4 /* Fonts.swift in Sources */,
 				04D120AA26B2AA3100A597B4 /* JSONSerialization+LoadSave.swift in Sources */,
+				0456EF7E26B48839003DBB49 /* Image.swift in Sources */,
 				04D1209B26B2AA2600A597B4 /* UICollectionViewExtensions.swift in Sources */,
 				0456EF4E26B4133E003DBB49 /* RestClient+NewsService.swift in Sources */,
 				04D1209026B2A91700A597B4 /* Constants.swift in Sources */,
@@ -736,6 +749,7 @@
 				04D1211126B3EA7100A597B4 /* Tags.swift in Sources */,
 				04D120E026B2C2CD00A597B4 /* OverviewInterfaces.swift in Sources */,
 				04D1202026B2A16F00A597B4 /* Initializable.swift in Sources */,
+				0456EF7926B487A6003DBB49 /* GraphItemType.swift in Sources */,
 				04D1205B26B2A3AE00A597B4 /* ViewInterface.swift in Sources */,
 				04D120FD26B3D6D900A597B4 /* NewsListItem.swift in Sources */,
 				04D120F226B2C2EB00A597B4 /* DetailViewController.swift in Sources */,
@@ -746,7 +760,9 @@
 				04D1204D26B2A38100A597B4 /* BasePopupViewController.swift in Sources */,
 				04D1210226B3D6EF00A597B4 /* TextSizeListItem.swift in Sources */,
 				04D120F126B2C2EB00A597B4 /* DetailPresenter.swift in Sources */,
+				0456EF7426B47493003DBB49 /* GraphItem.swift in Sources */,
 				04D1205A26B2A3AE00A597B4 /* PresenterInterface.swift in Sources */,
+				0456EF6F26B4736B003DBB49 /* Schema.swift in Sources */,
 				0456EF5326B413FE003DBB49 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
