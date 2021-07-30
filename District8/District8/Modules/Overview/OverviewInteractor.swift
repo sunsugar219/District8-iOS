@@ -16,4 +16,8 @@ final class OverviewInteractor {
 // MARK: - Extensions -
 
 extension OverviewInteractor: OverviewInteractorInterface {
+    
+    func getNews(completion: @escaping NewsLoaded) {
+        RestClient.shared.getNews { completion($0) }
+    }
 }

@@ -30,4 +30,9 @@ final class OverviewWireframe: BaseWireframe {
 // MARK: - Extensions -
 
 extension OverviewWireframe: OverviewWireframeInterface {
+    func openDetails(model: NewsModel) {
+        self.navigationController?.pushWireframe(DetailWireframe(model: model))
+    }
+    
+    
 }

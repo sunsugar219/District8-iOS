@@ -10,28 +10,13 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
-//private var preferredStatus = UIStatusBarStyle.lightContent
-//override var preferredStatusBarStyle: UIStatusBarStyle {
-//if #available(iOS 12.0, *) {
-//return preferredStatus
-//} else {
-//return .default
-//}
-//}
-//override func viewDidLoad() {
-//super.viewDidLoad()
-//if #available(iOS 13.0, *) {
-//overrideUserInterfaceStyle = .light
-//}
-//view.backgroundColor = .white
-//}
-//func setStatusBarLight(_ isLight: Bool) {
-//preferredStatus = isLight ? UIStatusBarStyle.lightContent : UIStatusBarStyle.default
-//setNeedsStatusBarAppearanceUpdate()
-//}
-//func setNavbarTitleBlack() {
-//navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Colors.Gray.Title, NSAttributedString.Key.font: FontDeliver.boldRobotoFont(ofSize: 28.0.xdScaled)]
-//navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Colors.Gray.Title]
-//}
-            
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.barTintColor = .black
+    }
 }

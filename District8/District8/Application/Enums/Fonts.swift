@@ -28,14 +28,14 @@ class Fonts: NSObject {
         UIFont(name: "Inter-SemiBold", size: 12)!
     }
     
-    static func Body1(size: CGFloat) -> UIFont {
+    static func Body1() -> UIFont {
         UIFont(name: "Inter-Medium", size: 15)!
     }
     
-    static func Caption2(size: CGFloat) -> UIFont {
+    static func Caption2() -> UIFont {
         UIFont(name: "Inter-Regular", size: 12)!
     }
-    static func Body2(size: CGFloat) -> UIFont {
+    static func Body2() -> UIFont {
         UIFont(name: "Inter-Regular", size: 15)!
     }
 }

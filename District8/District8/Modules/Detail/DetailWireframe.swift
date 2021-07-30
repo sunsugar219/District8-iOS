@@ -16,12 +16,12 @@ final class DetailWireframe: BaseWireframe {
 
     // MARK: - Module setup -
 
-    init() {
+    init(model: NewsModel) {
         let moduleViewController = DetailViewController()
         super.init(viewController: moduleViewController)
 
         let interactor = DetailInteractor()
-        let presenter = DetailPresenter(view: moduleViewController, interactor: interactor, wireframe: self)
+        let presenter = DetailPresenter(view: moduleViewController, interactor: interactor, wireframe: self, model: model)
         moduleViewController.presenter = presenter
     }
 

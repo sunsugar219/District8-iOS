@@ -11,13 +11,20 @@
 import UIKit
 
 protocol OverviewWireframeInterface: WireframeInterface {
+    func openDetails(model: NewsModel)
 }
 
 protocol OverviewViewInterface: ViewInterface {
+    func reload()
 }
 
 protocol OverviewPresenterInterface: PresenterInterface {
+    func getFeaturedArticle() -> NewsModel?
+    func getNumberOfItems() -> Int
+    func getItem(at indexPath: IndexPath) -> NewsModel
+    func didSelectRow(at indexPath: IndexPath)
 }
 
 protocol OverviewInteractorInterface: InteractorInterface {
+    func getNews(completion: @escaping NewsLoaded)
 }

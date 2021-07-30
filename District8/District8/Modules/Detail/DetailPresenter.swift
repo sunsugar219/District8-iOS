@@ -17,17 +17,24 @@ final class DetailPresenter {
     private unowned let view: DetailViewInterface
     private let interactor: DetailInteractorInterface
     private let wireframe: DetailWireframeInterface
+    
+    private let article: NewsModel?
 
     // MARK: - Lifecycle -
 
-    init(view: DetailViewInterface, interactor: DetailInteractorInterface, wireframe: DetailWireframeInterface) {
+    init(view: DetailViewInterface, interactor: DetailInteractorInterface, wireframe: DetailWireframeInterface, model: NewsModel) {
         self.view = view
         self.interactor = interactor
         self.wireframe = wireframe
+        self.article = model
     }
 }
 
 // MARK: - Extensions -
 
 extension DetailPresenter: DetailPresenterInterface {
+    func getContent() -> String? {
+        article?.content?.text
+    }
+    
 }
