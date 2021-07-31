@@ -9,32 +9,111 @@
 //
 
 import Foundation
+import SwiftSoup
 
 final class DetailPresenter {
-
+    
     // MARK: - Private properties -
-
+    
     private unowned let view: DetailViewInterface
     private let interactor: DetailInteractorInterface
     private let wireframe: DetailWireframeInterface
     
-    private let article: NewsModel?
-
+    private var imageUrl: String?
+    private var place: String?
+    private var title: String?
+    private var author: String?
+    private var date: String?
+    private var subTitle: String?
+    private var bodyText: String?
+    private var media: [String?]?
+    
     // MARK: - Lifecycle -
-
+    
     init(view: DetailViewInterface, interactor: DetailInteractorInterface, wireframe: DetailWireframeInterface, model: NewsModel) {
         self.view = view
         self.interactor = interactor
         self.wireframe = wireframe
-        self.article = model
+        
+        parseData(model: model)
+        
+    }
+    
+    private func parseData(model: NewsModel) {
+        date = model.date
+        if let graphItems = model.main?.schema?.graph {
+            for item in graphItems {
+                if item.type == GraphItemType.Article.rawValue, let tags = item.articleSection {
+                    
+                    for tag in tags {
+                        switch tag {
+                        case Tags.Delft.rawValue:
+                            place = Tags.Delft.rawValue
+                        case Tags.Haaglanden.rawValue:
+                            place = Tags.Haaglanden.rawValue
+                        case Tags.Westland.rawValue:
+                            place = Tags.Westland.rawValue
+                        case "Rotterdam-Rijnmond":
+                            place = "Rotterdam-Rijnmond"
+                        default:
+                            place = ""
+                        }
+                    }
+                }
+                
+                if item.type == GraphItemType.ImageObject.rawValue, let image = item.contentUrl {
+                    imageUrl = image
+                }
+                
+                if item.type == GraphItemType.Person.rawValue, let name = item.name {
+                    author = name
+                }
+            }
+        }
+        if let author = author, let date = date {
+            subTitle = "Written by: \(author) -- \(date)"
+        }
+        do {
+            let html: String = model.content?.text ?? ""
+            let doc: Document = try SwiftSoup.parseBodyFragment(html)
+            let body: Element? = doc.body()
+            bodyText = try body?.text()
+            print(bodyText)
+        } catch Exception.Error(let type, let message) {
+            print(message)
+        } catch {
+            print("error")
+        }
     }
 }
 
 // MARK: - Extensions -
 
 extension DetailPresenter: DetailPresenterInterface {
-    func getContent() -> String? {
-        article?.content?.text
+    func getImageUrl() -> String? {
+        imageUrl
     }
+    
+    func getPlace() -> String? {
+        place
+    }
+    
+    func getTitle() -> String? {
+        title
+    }
+    
+    func getSubTitle() -> String? {
+        subTitle
+    }
+    
+    func getBodyText() -> String? {
+        bodyText
+    }
+    
+    func getMedia() -> [String?]? {
+        media
+    }
+    
+    
     
 }

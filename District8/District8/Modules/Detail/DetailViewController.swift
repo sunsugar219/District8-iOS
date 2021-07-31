@@ -18,47 +18,102 @@ final class DetailViewController: UIViewController {
     var presenter: DetailPresenterInterface!
     
     private var scrollView: UIScrollView!
-    private var webView = WKWebView(frame: .zero)
+    private var mainImageView: UIImageView!
+    private var placeTag: Tag!
+    private var titleLabel: UILabel!
+    private var subtitleLabel: UILabel!
+    private var bodyLabel: UILabel!
+    private var imagesStackView: UIStackView!
 
     // MARK: - Lifecycle -
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
         
-//        scrollView = UIScrollView()
-//        scrollView.showsHorizontalScrollIndicator = false
-//        scrollView.showsVerticalScrollIndicator = true
-//        view.addSubview(scrollView)
-//
-//        scrollView.snp.makeConstraints { make in
-//            make.top.equalTo(view.snp.top)
-//            make.leading.trailing.bottom.equalToSuperview()
-//        }
-        
-        webView.contentMode = .scaleAspectFit
-        webView.sizeToFit()
-        webView.autoresizesSubviews = true
-        webView.isOpaque = false
-        webView.scrollView.backgroundColor = .clear
-        webView.scrollView.isScrollEnabled = true
-        webView.backgroundColor = .clear
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(webView)
-        webView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        self.view.setNeedsLayout()
-        webView.navigationDelegate = self
-        if let content =  presenter.getContent() {
-        webView.loadHTMLString(content, baseURL: nil)
-        }    }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let content =  presenter.getContent() {
-        webView.loadHTMLString(content, baseURL: nil)
+        initNavbar()
+    }
+    
+    private func setup() {
+        initScrollView()
+        initMainImageView()
+        initPlaceTag()
+        initTitleLabel()
+        initSubtitleLabel()
+        initBodyLabel()
+        initImagesStackView()
+    }
+    
+    private func initScrollView() {
+        scrollView = UIScrollView()
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = true
+        view.addSubview(scrollView)
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.top)
+            make.leading.trailing.bottom.equalToSuperview()
         }
+    }
+    
+    private func initMainImageView() {
+        mainImageView = UIImageView()
+        mainImageView.contentMode = .scaleAspectFit
+    }
+    
+    private func initPlaceTag() {
+        
+    }
+    
+    private func initTitleLabel() {
+        
+    }
+    
+    private func initSubtitleLabel() {
+        
+    }
+    
+    private func initBodyLabel() {
+        
+    }
+    
+    private func initImagesStackView() {
+        
+    }
+    
+    private func initNavbar() {
+        let sizeImage = UIImage(named: "ic_text_size")!
+        let shareImage = UIImage(named: "ic_share")!
+        let backImage = UIImage(named: "ic_chevron_left")!
+        
+        let sizeButton   = UIBarButtonItem(image: sizeImage,  style: .plain, target: self, action: #selector(didTapSizeButton(sender:)))
+        let shareButton = UIBarButtonItem(image: shareImage,  style: .plain, target: self, action: #selector(didTapShareButton(sender:)))
+        
+        navigationItem.rightBarButtonItems = [sizeButton, shareButton]
+        
+        let backButton = UIBarButtonItem(image: backImage,  style: .plain, target: self, action: #selector(didTapBackButton(sender:)))
+        navigationItem.leftBarButtonItems = [backButton]
+        
+        let titleImage = UIImage(named: "")
+        navigationItem.titleView = UIImageView(image: titleImage)
+    }
+    @objc
+    private func didTapSizeButton(sender: AnyObject){
+        
+    }
+    
+    @objc
+    private func didTapShareButton(sender: AnyObject){
+        
+    }
+    
+    @objc
+    private func didTapBackButton(sender: AnyObject){
+        
     }
 
 }

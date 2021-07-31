@@ -104,8 +104,7 @@ class FeaturedArticle: UITableViewCell {
         var place = ""
         if let graphItems = model.main?.schema?.graph {
             for item in graphItems {
-                if item.type == GraphItemType.Article.rawValue, let tags = item.articleSection, let image = item.image?.link {
-                    mainImage.downloaded(from: image)
+                if item.type == GraphItemType.Article.rawValue, let tags = item.articleSection {
                     
                     for tag in tags {
                     switch tag {
@@ -121,6 +120,9 @@ class FeaturedArticle: UITableViewCell {
                         place = ""
                     }
                     }
+                }
+                if item.type == GraphItemType.ImageObject.rawValue, let image = item.contentUrl {
+                    mainImage.downloaded(from: image)
                 }
             }
         }

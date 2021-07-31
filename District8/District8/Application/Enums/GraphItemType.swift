@@ -9,4 +9,5 @@ import Foundation
 enum GraphItemType: String {
     case Article
     case Person
+    case ImageObject
 }

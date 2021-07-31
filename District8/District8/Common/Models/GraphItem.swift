@@ -16,13 +16,15 @@ class GraphItem: Mappable {
     var headline: String?
     var dateModified: Date?
     var datePublished: Date?
-    var image: Image?
     var thumbnailUrl: String?
     //below will contain cities for filter feature
     var articleSection: [String?]?
     
     // type == person
     var name: String?
+    
+    //type == imageObject
+    var contentUrl: String?
     
     required init?(map: Map) {
         mapping(map: map)
@@ -35,11 +37,12 @@ class GraphItem: Mappable {
         headline <- map["headline"]
         dateModified <- (map["dateModified"], DateTransform(unit: .seconds))
         datePublished <- (map["datePublished"], DateTransform(unit: .seconds))
-        image <- map["image"]
         thumbnailUrl <- map["thumbnailUrl"]
         articleSection <- map["articleSection"]
         
         name <- map["name"]
+        
+        contentUrl <- map["contentUrl"]
     }
     
 }

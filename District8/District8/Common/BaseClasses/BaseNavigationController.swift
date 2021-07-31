@@ -31,17 +31,17 @@ navigationBar.largeTitleTextAttributes = textAttributes
         //navigationBar.isTranslucent = false
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
-        navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
-        navigationBar.frame.size.height = 100.0
+        navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .never
+//        navigationBar.frame.size.height = 100.0
 //        navigationBar.tintColor = Colors.Blue.Primary
-        backgroundView = UIView()
-        backgroundView.backgroundColor = .white
-        view.addSubview(backgroundView)
-        backgroundView.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
-            make.bottom.equalTo(self.topLayoutGuide.snp.bottom)
-        }
+//        backgroundView = UIView()
+//        backgroundView.backgroundColor = .white
+//        view.addSubview(backgroundView)
+//        backgroundView.snp.makeConstraints { make in
+//            make.top.left.right.equalToSuperview()
+//            make.bottom.equalTo(self.topLayoutGuide.snp.bottom)
+//        }
     }
 
 func hideBackgroundView(_ hide: Bool = true) {

@@ -17,7 +17,12 @@ protocol DetailViewInterface: ViewInterface {
 }
 
 protocol DetailPresenterInterface: PresenterInterface {
-    func getContent() -> String?
+    func getImageUrl() -> String?
+    func getPlace() -> String?
+    func getTitle() -> String?
+    func getSubTitle() -> String?
+    func getBodyText() -> String?
+    func getMedia() -> [String?]?
 }
 
 protocol DetailInteractorInterface: InteractorInterface {
