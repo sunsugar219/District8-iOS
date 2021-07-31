@@ -24,6 +24,11 @@ class BasePopUpViewController: BaseViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        removeStatusBarView()
+    }
+    
     private func setup() {
         initTransparentView()
         initContainerView()
@@ -37,7 +42,7 @@ class BasePopUpViewController: BaseViewController {
     
     private func initTransparentView() {
         transparentView = UIView()
-//        transparentView.backgroundColor = UIColor.clear
+        transparentView.backgroundColor = UIColor(named: "Overlay")
         view.addSubview(transparentView)
         transparentView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

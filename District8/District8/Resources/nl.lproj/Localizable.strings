@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  District8
+
+  Created by Hodi Zsuzsa on 2021. 07. 29..
+  
+*/
+"TextSize" = "Lettergrootte";
+"Small" = "Klein";
+"Normal" = "Normaal";
+"Big" = "Groot";
+"Bigger" = "Groter";

@@ -20,9 +20,9 @@ struct Constants {
         
     }
     
-//    struct Notifications {
-//        static let TweetChanged = NSNotification.Name("TweetChanged")
-//
-//    }
+    struct Notifications {
+        static let TextSizeChanged = NSNotification.Name("TextSizeChanged")
+
+    }
     
 }

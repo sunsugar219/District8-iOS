@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class BaseViewController: UIViewController {
+    private var statusBarView: UIView!
     
 //    override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(animated)
@@ -35,19 +36,23 @@ class BaseViewController: UIViewController {
         setWhiteStatusbar()
     }
     
+    func removeStatusBarView() {
+        statusBarView = nil
+    }
+    
     private func setWhiteStatusbar() {
         if #available(iOS 13.0, *) {
 
                     let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                     let statusBarFrame = window?.windowScene?.statusBarManager?.statusBarFrame
 
-                    let statusBarView = UIView(frame: statusBarFrame!)
+                    statusBarView = UIView(frame: statusBarFrame!)
                     self.view.addSubview(statusBarView)
             statusBarView.backgroundColor = .white
                 } else {
                     //Below iOS13
                     let statusBarFrame = UIApplication.shared.statusBarFrame
-                    let statusBarView = UIView(frame: statusBarFrame)
+                    statusBarView = UIView(frame: statusBarFrame)
                     self.view.addSubview(statusBarView)
                     statusBarView.backgroundColor = .white
                 }
