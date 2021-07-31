@@ -19,6 +19,7 @@ def shared_pods
     pod 'SwifterSwift'
     pod 'SwiftSoup'
     pod 'NVActivityIndicatorView'
+    pod 'youtube-ios-player-helper-swift'
  #   pod 'Firebase'
  #   pod 'Firebase/Analytics'
  #   pod 'Firebase/Auth'

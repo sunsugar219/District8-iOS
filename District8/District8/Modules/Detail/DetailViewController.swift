@@ -10,8 +10,9 @@
 
 import UIKit
 import WebKit
+import youtube_ios_player_helper_swift
 
-final class DetailViewController: UIViewController {
+final class DetailViewController: BaseViewController {
 
     // MARK: - Public properties -
 
@@ -51,7 +52,7 @@ final class DetailViewController: UIViewController {
     private func initScrollView() {
         scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = true
+        scrollView.showsVerticalScrollIndicator = false
         view.addSubview(scrollView)
         
         scrollView.snp.makeConstraints { make in
@@ -63,26 +64,103 @@ final class DetailViewController: UIViewController {
     private func initMainImageView() {
         mainImageView = UIImageView()
         mainImageView.contentMode = .scaleAspectFit
+        if let img = presenter.getImageUrl() {
+            mainImageView.downloaded(from: img)
+        }
+        scrollView.addSubview(mainImageView)
+        mainImageView.snp.makeConstraints { make in
+            make.top.leading.centerX.equalToSuperview()
+        }
     }
     
     private func initPlaceTag() {
+        placeTag = Tag()
+        placeTag.text = presenter.getPlace()
         
+        scrollView.addSubview(placeTag)
+        placeTag.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(16.0.screenScaled)
+            make.top.equalTo(mainImageView.snp.bottom).offset(16.0.screenScaled)
+        }
     }
     
     private func initTitleLabel() {
+        titleLabel = UILabel()
+        titleLabel.font = Fonts.Headline()
+        titleLabel.textColor = UIColor(named: "Black")
+        titleLabel.numberOfLines = 2
+        titleLabel.lineBreakMode = .byTruncatingTail
+        titleLabel.text = presenter.getTitle()
         
+        scrollView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(16.0.screenScaled)
+            make.top.equalTo(placeTag.snp.bottom).offset(16.0.screenScaled)
+            make.centerX.equalToSuperview()
+        }
     }
     
     private func initSubtitleLabel() {
+        subtitleLabel = UILabel()
+        subtitleLabel.font = Fonts.Caption2()
+        subtitleLabel.textColor = UIColor(named: "DarkGrey")
+        subtitleLabel.numberOfLines = 2
+        subtitleLabel.lineBreakMode = .byTruncatingTail
+        subtitleLabel.text = presenter.getSubTitle()
+        
+        scrollView.addSubview(subtitleLabel)
+        subtitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(4.0.screenScaled)
+            make.leading.equalToSuperview().offset(16.0.screenScaled)
+            make.centerX.equalToSuperview()
+        }
         
     }
     
     private func initBodyLabel() {
+        bodyLabel = UILabel()
+        bodyLabel.font = Fonts.Body2()
+        bodyLabel.textColor = UIColor(named: "Black")
+        bodyLabel.text = presenter.getBodyText()
+        bodyLabel.numberOfLines = 0
         
+        scrollView.addSubview(bodyLabel)
+        bodyLabel.snp.makeConstraints { make in
+            make.top.equalTo(subtitleLabel.snp.bottom).offset(16.0.screenScaled)
+            make.leading.equalToSuperview().offset(16.0.screenScaled)
+            make.centerX.equalToSuperview()
+        }
     }
     
     private func initImagesStackView() {
+        imagesStackView = UIStackView()
+        imagesStackView.axis = .vertical
+        imagesStackView.distribution = .fillEqually
         
+        for img in presenter.getMedia() {
+            if let img = img, img.contains("youtube") {
+                let videoId = String(img.split(separator: "/").last!)
+                var view = YTPlayerView()
+                view.load(videoId: videoId)
+                
+                imagesStackView.addArrangedSubview(view)
+            } else {
+                let view = UIImageView()
+                view.contentMode = .scaleAspectFit
+                view.downloaded(from: img ?? "")
+                
+                imagesStackView.addArrangedSubview(view)
+            }
+        }
+        
+        let oneHeight = ((UIScreen.main.bounds.width)*2/3)+16
+        let fullheight = oneHeight * CGFloat(presenter.getMedia().count)
+        scrollView.addSubview(imagesStackView)
+        imagesStackView.snp.makeConstraints { make in
+            make.top.equalTo(bodyLabel.snp.bottom).offset(16.0.screenScaled)
+            make.leading.centerX.bottom.equalToSuperview()
+            make.height.equalTo(fullheight)
+        }
     }
     
     private func initNavbar() {
@@ -93,7 +171,7 @@ final class DetailViewController: UIViewController {
         let sizeButton   = UIBarButtonItem(image: sizeImage,  style: .plain, target: self, action: #selector(didTapSizeButton(sender:)))
         let shareButton = UIBarButtonItem(image: shareImage,  style: .plain, target: self, action: #selector(didTapShareButton(sender:)))
         
-        navigationItem.rightBarButtonItems = [sizeButton, shareButton]
+        navigationItem.rightBarButtonItems = [shareButton, sizeButton]
         
         let backButton = UIBarButtonItem(image: backImage,  style: .plain, target: self, action: #selector(didTapBackButton(sender:)))
         navigationItem.leftBarButtonItems = [backButton]
@@ -103,7 +181,7 @@ final class DetailViewController: UIViewController {
     }
     @objc
     private func didTapSizeButton(sender: AnyObject){
-        
+        presenter.sizeTapped()
     }
     
     @objc
@@ -113,7 +191,7 @@ final class DetailViewController: UIViewController {
     
     @objc
     private func didTapBackButton(sender: AnyObject){
-        
+        presenter.backTapped()
     }
 
 }

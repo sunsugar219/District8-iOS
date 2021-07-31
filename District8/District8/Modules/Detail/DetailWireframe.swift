@@ -30,4 +30,8 @@ final class DetailWireframe: BaseWireframe {
 // MARK: - Extensions -
 
 extension DetailWireframe: DetailWireframeInterface {
+    func openSizePicker() {
+        
+    }
+    
 }

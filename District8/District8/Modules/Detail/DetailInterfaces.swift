@@ -11,6 +11,7 @@
 import UIKit
 
 protocol DetailWireframeInterface: WireframeInterface {
+    func openSizePicker()
 }
 
 protocol DetailViewInterface: ViewInterface {
@@ -22,7 +23,10 @@ protocol DetailPresenterInterface: PresenterInterface {
     func getTitle() -> String?
     func getSubTitle() -> String?
     func getBodyText() -> String?
-    func getMedia() -> [String?]?
+    func getMedia() -> [String?]
+    
+    func sizeTapped()
+    func backTapped()
 }
 
 protocol DetailInteractorInterface: InteractorInterface {

@@ -10,7 +10,7 @@
 
 import UIKit
 
-final class OverviewViewController: UIViewController {
+final class OverviewViewController: BaseViewController {
     
     // MARK: - Public properties -
     
@@ -114,11 +114,13 @@ extension OverviewViewController: UITableViewDataSource, UITableViewDelegate {
             if let model = presenter.getFeaturedArticle() {
                 cell.bind(model: model)
             }
+            cell.selectionStyle = .none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: NewsListItem.cellId, for: indexPath) as! NewsListItem
             cell.bind(model: presenter.getItem(at: indexPath))
-            
+            cell.selectionStyle = .none
+
             return cell
         }
     }

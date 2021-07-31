@@ -25,8 +25,8 @@ final class DetailPresenter {
     private var author: String?
     private var date: String?
     private var subTitle: String?
-    private var bodyText: String?
-    private var media: [String?]?
+    private var bodyText = ""
+    private var media = [String?]()
     
     // MARK: - Lifecycle -
     
@@ -41,6 +41,7 @@ final class DetailPresenter {
     
     private func parseData(model: NewsModel) {
         date = model.date
+        title = model.title?.text
         if let graphItems = model.main?.schema?.graph {
             for item in graphItems {
                 if item.type == GraphItemType.Article.rawValue, let tags = item.articleSection {
@@ -76,8 +77,25 @@ final class DetailPresenter {
         do {
             let html: String = model.content?.text ?? ""
             let doc: Document = try SwiftSoup.parseBodyFragment(html)
-            let body: Element? = doc.body()
-            bodyText = try body?.text()
+            if let body = doc.body() {
+                for child in body.children() {
+                    if child.hasAttr("src") {
+                        let url = try child.attr("src")
+                        media.append(url)
+                    } else {
+                        let text = try child.text()
+                        bodyText.append(text)
+                    }
+                }
+                if media.isEmpty {
+                    let elements = try body.getElementsByAttribute("src")
+                    for element in elements {
+                        let img = try element.attr("src")
+                        media.append(img)
+                    }
+                }
+            }
+            
             print(bodyText)
         } catch Exception.Error(let type, let message) {
             print(message)
@@ -90,6 +108,15 @@ final class DetailPresenter {
 // MARK: - Extensions -
 
 extension DetailPresenter: DetailPresenterInterface {
+    func sizeTapped() {
+        wireframe.openSizePicker()
+    }
+    
+    func backTapped() {
+        wireframe.popFromNavigationController(animated: true)
+    }
+    
+    
     func getImageUrl() -> String? {
         imageUrl
     }
@@ -110,7 +137,7 @@ extension DetailPresenter: DetailPresenterInterface {
         bodyText
     }
     
-    func getMedia() -> [String?]? {
+    func getMedia() -> [String?] {
         media
     }
     

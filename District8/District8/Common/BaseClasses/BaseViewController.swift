@@ -10,13 +10,46 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.barTintColor = .black
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        view.backgroundColor = .white
+//        navigationController?.navigationBar.isTranslucent = false
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.prefersLargeTitles = false
+//        navigationController?.navigationItem.largeTitleDisplayMode = .never
+//        navigationController?.navigationBar.barTintColor = .black
+//    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setWhiteStatusbar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setWhiteStatusbar()
+    }
+    
+    @objc
+    private func appFromBackground() {
+        setWhiteStatusbar()
+    }
+    
+    private func setWhiteStatusbar() {
+        if #available(iOS 13.0, *) {
+
+                    let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+                    let statusBarFrame = window?.windowScene?.statusBarManager?.statusBarFrame
+
+                    let statusBarView = UIView(frame: statusBarFrame!)
+                    self.view.addSubview(statusBarView)
+            statusBarView.backgroundColor = .white
+                } else {
+                    //Below iOS13
+                    let statusBarFrame = UIApplication.shared.statusBarFrame
+                    let statusBarView = UIView(frame: statusBarFrame)
+                    self.view.addSubview(statusBarView)
+                    statusBarView.backgroundColor = .white
+                }
     }
 }
