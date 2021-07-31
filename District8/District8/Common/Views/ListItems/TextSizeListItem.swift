@@ -27,6 +27,7 @@ class TextSizeListItem: UITableViewCell {
     private func setup() {
         initTitleLabel()
         initCheckmark()
+        initSeparator()
     }
     
     private func initTitleLabel() {
@@ -40,7 +41,7 @@ class TextSizeListItem: UITableViewCell {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(16.0.screenScaled)
-            make.centerY.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
         }
     }
     
@@ -73,12 +74,15 @@ class TextSizeListItem: UITableViewCell {
     func hideSeparator() {
         separator.alpha = 0
     }
-    
+        
     func bind(text: String) {
         titleLabel.text = text
         if let saved = UserDefaults.standard.string(forKey: Constants.UserDefaults.TextSize), saved == text {
             checkmark.alpha = 1
-            self.tintColor = UIColor(named: "Delft")
+            titleLabel.textColor = UIColor(named: "Delft")
+        } else {
+            checkmark.alpha = 0
+            titleLabel.textColor = UIColor(named: "Black")
         }
     }
     

@@ -31,15 +31,12 @@ final class DetailWireframe: BaseWireframe {
 
 extension DetailWireframe: DetailWireframeInterface {
     func openSizePicker() {
-//        navigationController?.present(TextSizePickerWireframe().viewController, animated: true, completion: nil)
         
         let navController = BaseNavigationController()
         navController.setClearBackground()
         navController.modalTransitionStyle = .crossDissolve
         navController.modalPresentationStyle = .overCurrentContext
         navController.pushViewController(TextSizePickerWireframe().viewController, animated: false)
-//        viewController.providesPresentationContextTransitionStyle = true
-//        viewController.definesPresentationContext = true
         viewController.present(navController, animated: true, completion: nil)
 
     }

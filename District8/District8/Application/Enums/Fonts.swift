@@ -35,7 +35,7 @@ class Fonts: NSObject {
     static func Caption2() -> UIFont {
         UIFont(name: "Inter-Regular", size: 12)!
     }
-    static func Body2() -> UIFont {
-        UIFont(name: "Inter-Regular", size: 15)!
+    static func Body2(size: CGFloat = 15 ) -> UIFont {
+        UIFont(name: "Inter-Regular", size: size)!
     }
 }

@@ -31,7 +31,7 @@ final class DetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(textsizeChanged), name: Constants.Notifications.TextSizeChanged, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +39,22 @@ final class DetailViewController: BaseViewController {
         initNavbar()
     }
     
+    @objc
+    private func textsizeChanged() {
+        guard bodyLabel != nil else { return }
+        switch UserDefaults.standard.string(forKey: Constants.UserDefaults.TextSize) {
+        case "Small".localized:
+            bodyLabel.font = Fonts.Body2(size: 12)
+        case "Normal".localized:
+            bodyLabel.font = Fonts.Body2(size: 15)
+        case "Big".localized:
+            bodyLabel.font = Fonts.Body2(size: 17)
+        case "Bigger".localized:
+        bodyLabel.font = Fonts.Body2(size: 19)
+        default:
+            bodyLabel.font = Fonts.Body2()
+        }
+    }
     private func setup() {
         initScrollView()
         initMainImageView()
@@ -119,7 +135,18 @@ final class DetailViewController: BaseViewController {
     
     private func initBodyLabel() {
         bodyLabel = UILabel()
-        bodyLabel.font = Fonts.Body2()
+        switch UserDefaults.standard.string(forKey: Constants.UserDefaults.TextSize) {
+        case "Small".localized:
+            bodyLabel.font = Fonts.Body2(size: 12)
+        case "Normal".localized:
+            bodyLabel.font = Fonts.Body2(size: 15)
+        case "Big".localized:
+            bodyLabel.font = Fonts.Body2(size: 17)
+        case "Bigger".localized:
+        bodyLabel.font = Fonts.Body2(size: 19)
+        default:
+            bodyLabel.font = Fonts.Body2()
+        }
         bodyLabel.textColor = UIColor(named: "Black")
         bodyLabel.text = presenter.getBodyText()
         bodyLabel.numberOfLines = 0

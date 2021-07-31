@@ -13,6 +13,7 @@ class PopupHeaderView: UITableViewCell {
    
     private var titleLabel: UILabel!
     private var closeButton: UIImageView!
+    private var separator: UIView!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,6 +26,7 @@ class PopupHeaderView: UITableViewCell {
     
     private func setup() {
         self.backgroundColor = .white
+        initSeparator()
         initCloseButton()
         initTitleLabel()
     }
@@ -53,6 +55,19 @@ class PopupHeaderView: UITableViewCell {
         }
     }
     
+    private func initSeparator() {
+        separator = UIView()
+        separator.backgroundColor = UIColor(named: "LightGrey")
+        
+        addSubview(separator)
+        separator.snp.makeConstraints { make in
+            make.leading.bottom.centerX.equalToSuperview()
+            make.height.equalTo(1.0.screenScaled)
+        }
+    }
+//    func hideSeparator() {
+//        separator.alpha = 0
+//    }
     func bind(text: String) {
         titleLabel.text = text
     }

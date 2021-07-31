@@ -63,7 +63,10 @@ extension TextSizePickerViewController: UITableViewDelegate, UITableViewDataSour
         if text == UserDefaults.standard.string(forKey: Constants.UserDefaults.TextSize) {
             cell.setSelected(true, animated: true)
         }
-        cell.selectionStyle = .blue
+        if indexPath.row == (self.tableView(tableView, numberOfRowsInSection: 0))-1 {
+            cell.hideSeparator()
+        }
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -93,6 +96,8 @@ extension TextSizePickerViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         UserDefaults.standard.setValue(presenter.getOption(at: indexPath), forKey: Constants.UserDefaults.TextSize)
+        tableView.reloadData()
+        NotificationCenter.default.post(name: Constants.Notifications.TextSizeChanged, object: nil)
     }
 }
 extension TextSizePickerViewController: UIGestureRecognizerDelegate {}
