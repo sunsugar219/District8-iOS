@@ -10,3 +10,9 @@
 "Normal" = "Normaal";
 "Big" = "Groot";
 "Bigger" = "Groter";
+"FilterTitle" = "Filter op regio";
+"Filter1" = "Delft";
+"Filter2" = "Haaglanden";
+"Filter3" = "Westland";
+"Filter4" = "Rotterdam-Rijnmond";
+"ApplyFilter" = "Pas filter toe";

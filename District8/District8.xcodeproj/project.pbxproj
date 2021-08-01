@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0447373D26B6C91100D5A13D /* FilterListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447373C26B6C91100D5A13D /* FilterListItem.swift */; };
+		0447374726B6CB1000D5A13D /* FilterPickerInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447374226B6CB1000D5A13D /* FilterPickerInterfaces.swift */; };
+		0447374826B6CB1000D5A13D /* FilterPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447374326B6CB1000D5A13D /* FilterPickerPresenter.swift */; };
+		0447374926B6CB1000D5A13D /* FilterPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447374426B6CB1000D5A13D /* FilterPickerViewController.swift */; };
+		0447374A26B6CB1000D5A13D /* FilterPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447374526B6CB1000D5A13D /* FilterPickerInteractor.swift */; };
+		0447374B26B6CB1000D5A13D /* FilterPickerWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447374626B6CB1000D5A13D /* FilterPickerWireframe.swift */; };
 		0456EF4526B412CE003DBB49 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456EF4326B412CE003DBB49 /* RestClient.swift */; };
 		0456EF4E26B4133E003DBB49 /* RestClient+NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456EF4D26B4133E003DBB49 /* RestClient+NewsService.swift */; };
 		0456EF5326B413FE003DBB49 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456EF5226B413FE003DBB49 /* APIError.swift */; };
@@ -92,6 +98,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0447373C26B6C91100D5A13D /* FilterListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListItem.swift; sourceTree = "<group>"; };
+		0447374226B6CB1000D5A13D /* FilterPickerInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPickerInterfaces.swift; sourceTree = "<group>"; };
+		0447374326B6CB1000D5A13D /* FilterPickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPickerPresenter.swift; sourceTree = "<group>"; };
+		0447374426B6CB1000D5A13D /* FilterPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPickerViewController.swift; sourceTree = "<group>"; };
+		0447374526B6CB1000D5A13D /* FilterPickerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPickerInteractor.swift; sourceTree = "<group>"; };
+		0447374626B6CB1000D5A13D /* FilterPickerWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPickerWireframe.swift; sourceTree = "<group>"; };
 		0456EF4326B412CE003DBB49 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
 		0456EF4D26B4133E003DBB49 /* RestClient+NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestClient+NewsService.swift"; sourceTree = "<group>"; };
 		0456EF5226B413FE003DBB49 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -200,6 +212,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0447374126B6CAF600D5A13D /* FilterPicker */ = {
+			isa = PBXGroup;
+			children = (
+				0447374226B6CB1000D5A13D /* FilterPickerInterfaces.swift */,
+				0447374326B6CB1000D5A13D /* FilterPickerPresenter.swift */,
+				0447374426B6CB1000D5A13D /* FilterPickerViewController.swift */,
+				0447374526B6CB1000D5A13D /* FilterPickerInteractor.swift */,
+				0447374626B6CB1000D5A13D /* FilterPickerWireframe.swift */,
+			);
+			path = FilterPicker;
+			sourceTree = "<group>";
+		};
 		0456EFEA26B59B61003DBB49 /* TextSizePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +315,7 @@
 		04D1200B26B29EF100A597B4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0447374126B6CAF600D5A13D /* FilterPicker */,
 				0456EFEA26B59B61003DBB49 /* TextSizePicker */,
 				04D120DA26B2C2A800A597B4 /* Detail */,
 				04D120D926B2C29E00A597B4 /* Overview */,
@@ -488,6 +513,7 @@
 				04D120FC26B3D6D900A597B4 /* NewsListItem.swift */,
 				04D1210126B3D6EF00A597B4 /* TextSizeListItem.swift */,
 				0456EFE526B5988A003DBB49 /* PopupHeaderView.swift */,
+				0447373C26B6C91100D5A13D /* FilterListItem.swift */,
 			);
 			path = ListItems;
 			sourceTree = "<group>";
@@ -747,6 +773,7 @@
 				04D1210C26B3E87D00A597B4 /* Tag.swift in Sources */,
 				04D120CF26B2B2E500A597B4 /* Fonts.swift in Sources */,
 				04D120AA26B2AA3100A597B4 /* JSONSerialization+LoadSave.swift in Sources */,
+				0447374726B6CB1000D5A13D /* FilterPickerInterfaces.swift in Sources */,
 				0456EFE626B5988A003DBB49 /* PopupHeaderView.swift in Sources */,
 				04D1209B26B2AA2600A597B4 /* UICollectionViewExtensions.swift in Sources */,
 				0456EF4E26B4133E003DBB49 /* RestClient+NewsService.swift in Sources */,
@@ -770,6 +797,7 @@
 				04D120A926B2AA3100A597B4 /* AttributedString+Image.swift in Sources */,
 				04D1205D26B2A3AE00A597B4 /* InteractorInterface.swift in Sources */,
 				04D1209C26B2AA2600A597B4 /* UIImageExtensions.swift in Sources */,
+				0447373D26B6C91100D5A13D /* FilterListItem.swift in Sources */,
 				04D1204E26B2A38100A597B4 /* BaseViewController.swift in Sources */,
 				04D120F426B2C2EB00A597B4 /* DetailWireframe.swift in Sources */,
 				04D120E126B2C2CD00A597B4 /* OverviewPresenter.swift in Sources */,
@@ -778,14 +806,18 @@
 				04D1211126B3EA7100A597B4 /* Tags.swift in Sources */,
 				04D120E026B2C2CD00A597B4 /* OverviewInterfaces.swift in Sources */,
 				04D1202026B2A16F00A597B4 /* Initializable.swift in Sources */,
+				0447374B26B6CB1000D5A13D /* FilterPickerWireframe.swift in Sources */,
 				0456EF7926B487A6003DBB49 /* GraphItemType.swift in Sources */,
 				04D1205B26B2A3AE00A597B4 /* ViewInterface.swift in Sources */,
 				04D120FD26B3D6D900A597B4 /* NewsListItem.swift in Sources */,
 				04D120F226B2C2EB00A597B4 /* DetailViewController.swift in Sources */,
 				04D1204C26B2A38100A597B4 /* BaseNavigationController.swift in Sources */,
 				04D120E226B2C2CD00A597B4 /* OverviewViewController.swift in Sources */,
+				0447374826B6CB1000D5A13D /* FilterPickerPresenter.swift in Sources */,
 				04D1205926B2A3AE00A597B4 /* FormatterInterface.swift in Sources */,
+				0447374926B6CB1000D5A13D /* FilterPickerViewController.swift in Sources */,
 				04D1205C26B2A3AE00A597B4 /* UIStoryboardExtension.swift in Sources */,
+				0447374A26B6CB1000D5A13D /* FilterPickerInteractor.swift in Sources */,
 				04D1204D26B2A38100A597B4 /* BasePopupViewController.swift in Sources */,
 				04D1210226B3D6EF00A597B4 /* TextSizeListItem.swift in Sources */,
 				04D120F126B2C2EB00A597B4 /* DetailPresenter.swift in Sources */,

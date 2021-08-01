@@ -37,6 +37,7 @@ class FeaturedArticle: UITableViewCell {
     private func initMainImage() {
         mainImage = UIImageView()
         mainImage.contentMode = .scaleAspectFit
+        mainImage.backgroundColor = UIColor(named: "LightGrey")
         
         addSubview(mainImage)
         mainImage.snp.makeConstraints { make in

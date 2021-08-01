@@ -12,6 +12,7 @@ import UIKit
 
 protocol OverviewWireframeInterface: WireframeInterface {
     func openDetails(model: NewsModel)
+    func openFilter()
 }
 
 protocol OverviewViewInterface: ViewInterface {
@@ -23,6 +24,9 @@ protocol OverviewPresenterInterface: PresenterInterface {
     func getNumberOfItems() -> Int
     func getItem(at indexPath: IndexPath) -> NewsModel
     func didSelectRow(at indexPath: IndexPath)
+    
+    func filterTapped()
+    func filtersChanged()
 }
 
 protocol OverviewInteractorInterface: InteractorInterface {

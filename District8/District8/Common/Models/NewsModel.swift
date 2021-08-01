@@ -14,12 +14,14 @@ class NewsModel: Mappable {
     var date: String?
     var content: Content?
     var main: YoastHead?
+    var id: Int?
     
     required init?(map: Map) {
         mapping(map: map)
     }
     
     func mapping(map: Map) {
+        id <- map["id"]
         main <- map["yoast_head_json"]
         content <- map["content"]
         title <- map["title"]

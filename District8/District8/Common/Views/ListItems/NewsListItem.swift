@@ -35,6 +35,7 @@ class NewsListItem: UITableViewCell {
     private func initNewsImageView() {
         newsImageView = UIImageView()
         newsImageView.contentMode = .scaleAspectFit
+        newsImageView.backgroundColor = UIColor(named: "LightGrey")
         
         addSubview(newsImageView)
         newsImageView.snp.makeConstraints { make in

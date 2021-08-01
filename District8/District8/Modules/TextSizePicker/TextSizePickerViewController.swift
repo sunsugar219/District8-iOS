@@ -16,7 +16,7 @@ final class TextSizePickerViewController: BasePopUpViewController {
 
     var presenter: TextSizePickerPresenterInterface!
     
-    var tableView: UITableView!
+    private var tableView: UITableView!
 
     // MARK: - Lifecycle -
 

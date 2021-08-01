@@ -17,12 +17,12 @@ struct Constants {
     
     struct UserDefaults {
         static let TextSize = "TextSize"
-        
+        static let Filters = "Filters"
     }
     
     struct Notifications {
         static let TextSizeChanged = NSNotification.Name("TextSizeChanged")
-
+        static let FiltersChanged = NSNotification.Name("FiltersChanged")
     }
     
 }

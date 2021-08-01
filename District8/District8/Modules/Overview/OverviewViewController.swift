@@ -36,7 +36,13 @@ final class OverviewViewController: BaseViewController {
     }
     
     private func setup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(filtersChanged), name: Constants.Notifications.FiltersChanged, object: nil)
         initTableView()
+    }
+    
+    @objc
+    private func filtersChanged() {
+        presenter.filtersChanged()
     }
     
     private func initNavbar() {
@@ -68,7 +74,7 @@ final class OverviewViewController: BaseViewController {
     
     @objc
     private func didTapFilterButton(sender: AnyObject){
-        
+        presenter.filterTapped()
     }
     
     private func initTableView() {

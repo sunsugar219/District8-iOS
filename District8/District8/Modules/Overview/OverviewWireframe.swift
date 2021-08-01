@@ -30,6 +30,16 @@ final class OverviewWireframe: BaseWireframe {
 // MARK: - Extensions -
 
 extension OverviewWireframe: OverviewWireframeInterface {
+    func openFilter() {
+        let navController = BaseNavigationController()
+        navController.setClearBackground()
+        navController.modalTransitionStyle = .crossDissolve
+        navController.modalPresentationStyle = .overCurrentContext
+        navController.pushViewController(FilterPickerWireframe().viewController, animated: false)
+        viewController.present(navController, animated: true, completion: nil)
+
+    }
+    
     func openDetails(model: NewsModel) {
         self.navigationController?.pushWireframe(DetailWireframe(model: model))
     }
